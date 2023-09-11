@@ -1,7 +1,5 @@
 const inquirer = require("inquirer");
 const mysql = require('mysql2');
-const sequelize = require('./config/connection');
-const express = require('express');
 
 const db = mysql.createConnection(
     {
@@ -9,10 +7,10 @@ const db = mysql.createConnection(
       // MySQL username,
       user: 'root',
       // MySQL password
-      password: '',
-      database: 'classlist_db'
+      password: 'ppp111',
+      database: 'employee_tracker'
     },
-    console.log(`Connected to the classlist_db database.`)
+    console.log(`Connected to the employee_tracker database.`)
   );
 
 inquirer
