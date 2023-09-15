@@ -1,9 +1,30 @@
-# EmployeeTracker
-CLI for tracking employees, departments, roles, and saleries
+# Employee Tracker
 
+## Description
 
+This application will allow the user to keep track of employees, departments, roles, saleries, and managers for a small business. It is a command line application that uses SQL and javascript.
 
+## Table of Contents
 
+- [Installation](#installation)
+- [Usage](#usage)
+- [License](#license)
+
+## Installation
+
+navigate to github.com/roziert/EmployeeTracker and copy the SSH key for the code into a local repository. Then run the npm install and npm start commands to run the application in the command line after adjusting the sql login credentials.
+
+## Usage
+
+![!\[Screenshot\](.assets/images/image.png)](assets/images/EmployeeTrackerSS.png)
+
+Link to video of application on google drive: https://drive.google.com/file/d/1Rup-8KbBbItk3GNZna5Q4APhOhByKC1U/view
+
+## License
+
+MIT
+
+---
 
 
 I was provided the following instructions for building this application
