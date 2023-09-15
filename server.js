@@ -91,7 +91,6 @@ function viewAllEmployees() {
   SELECT * FROM employees
   LEFT JOIN roles ON employees.role_id = roles.id
   LEFT JOIN departments ON roles.dept_id = departments.id
-  LEFT JOIN employees ON employees.manager_id = employees.id;
   `;
   db.query(query, (err, res) => {
       if (err) throw err;
@@ -119,8 +118,8 @@ function addDepartment() {
 }
 //function to add a role
 function addRole() {
-  const query = "SELECT * FROM departments";
-  db.query(query, (err, res) => {
+   const query = "SELECT * FROM departments";
+   db.query(query, (err, res) => {
       if (err) throw err;
       inquirer
           .prompt([
@@ -136,16 +135,16 @@ function addRole() {
               },
               {
                   type: "list",
-                  name: "department",
-                  message: "Select the department for the new role:",
+                  name: "departments",
+                  message: "Select the departments for the new role:",
                   choices: res.map(
                       (departments) => departments.dept_name
                   ),
               },
           ])
           .then((answers) => {
-              const department = res.find(
-                  (department) => department.name === answers.department
+              const departments = res.find(
+                  (departments) => departments.name === answers.departments
               );
               const query = "INSERT INTO roles SET ?";
               db.query(
@@ -153,7 +152,7 @@ function addRole() {
                   {
                       title: answers.title,
                       salary: answers.salary,
-                      dept_id: department,
+                      dept_id: departments,
                   },
                   (err, res) => {
                       if (err) throw err;
@@ -161,14 +160,14 @@ function addRole() {
                   }
               );
           });
-  });
-}
+   });
+ }
 
 // Function to add an employee
 function addEmployee() {
-  db.query("SELECT id, title FROM roles", (error, results) => {
-      if (error) {
-          console.error(error);
+  db.query("SELECT id, title FROM roles", (err, results) => {
+      if (err) {
+          console.error(err);
           return;
       }
 
