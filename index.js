@@ -1,6 +1,7 @@
 //declare dependencies
 const inquirer = require("inquirer");
 const mysql = require('mysql2');
+const sequelize = require('sequelize');
 const fs = require('fs');
 
 //connect to the database
@@ -32,10 +33,9 @@ const db = mysql.createConnection(
   });
 
 //use inquirer to ask user what they'd like to do
-async function start(){
+function start(){
 inquirer
-    .prompt([
-        {
+    .prompt({
             type: 'list',
             name: 'options',
             message: 'What would you like to do?',
@@ -47,9 +47,8 @@ inquirer
               'Add new role',
               'Add new employee',
               'Update an employee'
-              ]
-        }
-    ]) 
+              ],
+}) 
     //launch function based on user choice
     .then((answer) => {
       switch (answer.options){
@@ -65,10 +64,10 @@ inquirer
       case "Add new department":
           addDepartment();
           break;
-      case "Add new role":
+      case "Add a new role":
           addRole();
           break;
-      case "Add new employee":
+      case "Add a new employee":
           addEmployee();
           break;
       case "Update an employee":
@@ -258,7 +257,7 @@ function addEmployee() {
   });
 }
 // function to update an employee
-function updateEmployee() {
+function updateEmployeeRole() {
   const queryEmployees =
   "SELECT employee.id, employee.first_name, employee.last_name, roles.title FROM employee LEFT JOIN roles ON employee.role_id = roles.id";
 const queryRoles = "SELECT * FROM roles";

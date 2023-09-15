@@ -11,7 +11,7 @@ VALUES ("General Manager", 150000, 1),
        ("Service Rep", 80000, 3);
 
 INSERT INTO employees (first_name, last_name, role_id, manager_id)
-VALUES ("Tom","Cruise", 1),
+VALUES ("Tom","Cruise", 1,NULL),
        ("Michael","Cera",2,1),
        ("Seth","Rogan",3,2),
        ("James","Franco",3,2),
