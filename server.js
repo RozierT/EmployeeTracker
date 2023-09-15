@@ -1,8 +1,7 @@
 //declare dependencies
 const inquirer = require("inquirer");
 const mysql = require('mysql2');
-const sequelize = require('sequelize');
-const fs = require('fs');
+
 
 //connect to the database
 const db = mysql.createConnection(
@@ -16,21 +15,9 @@ const db = mysql.createConnection(
 
   db.connect((err) => {
     if (err) throw err;
-    // console.log(`Connected to the employee_tracker database.`)
-    // start the application
+    console.log(`Connected to the employee_tracker database`)
     start();
 });
-
-//use fs to read schema and seeds for database
-  fs.readFile('./db/schema.sql', 'utf8', function(err, data) {
-    if (err) throw err;
-    console.log('Successfully loaded schema file.');
-
-    db.query(data, function(err, results) {
-      if (err) throw err;
-      console.log('Successfully executed schema.');
-    });
-  });
 
 //use inquirer to ask user what they'd like to do
 function start(){
@@ -51,7 +38,7 @@ inquirer
 }) 
     //launch function based on user choice
     .then((answer) => {
-      switch (answer.options){
+      switch (answer.options) {
         case "View all departments":
           viewAllDepartments();
           break;
@@ -152,7 +139,7 @@ function addRole() {
                   name: "department",
                   message: "Select the department for the new role:",
                   choices: res.map(
-                      (department) => departments.dept_name
+                      (departments) => departments.dept_name
                   ),
               },
           ])
